@@ -1,0 +1,15 @@
+>Hello user, my name is Matthew Phillips and I am a student at Montana State University.
+I will be the one guiding you through the process of understanding the Raspberry Pi 
+Camera System that we developed at BOREALIS Labs. Please keep in mind that these are
+purly automated messages and I am not directly messaging you.
+
+>This program will run on startup everytime the Pi is booted unless you disable the
+systemd service: systemctl disable BOREALIS_HELP. Though, it will hopefully provide some 
+helpful insight into the system and make diagnostics slightly easier.
+
+>To the left is a sidebar with several buttons that each hold useful information that
+pertains to individual components of the payload, if you are not familiar with any of the
+components in this payload I highly suggest reading through them, as they will provide an
+overview to get you started.
+
+>Thank you for choosing BOREALIS Labs when flyin-... erm... I-I mean, Thank you and good day.

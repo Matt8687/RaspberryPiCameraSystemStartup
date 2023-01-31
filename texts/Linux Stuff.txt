@@ -1,0 +1,10 @@
+>Firstly, the following commands:
+
+systemctl status BOREALIS_CAM
+systemctl status BOREALIS_CAM_SAVE
+
+allow you to check on the current running services of the Raspberry Pi Camera System.
+The top one checks on the created rstp server that accesses the cameras to output a
+signal to the ground station over the "local network" on the Ubiquiti Radio/Routers.
+The second one checks on the status of bash script that is automatically saving five
+minute segment videos into the videos folder locally on the Raspberry Pi's SD card.
