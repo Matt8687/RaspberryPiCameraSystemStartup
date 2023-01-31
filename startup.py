@@ -33,7 +33,7 @@ greeting = tk.Label(main_terminal,
     )
 greeting.configure(font=font)
 
-hithere = tk.Button(frame2, text="Hello", command=lambda: sayhi(root, greeting, hithere), width=button_width)
+hithere = tk.Button(frame2, text="Hello", command=lambda: sayhi(root, greeting, hithere), width=button_width, font=font1)
 hithere.configure(font=font)
 hithere.pack(side=tk.LEFT)
  
@@ -64,11 +64,13 @@ def outputB(text, label):
     label.configure(text=text)
 
 def sayhi(root, label, button):
+    button.destroy();
+    button = tk.Button(frame2, text="Yes.", command=lambda: info(root, label, button, "Startup"), width=button_width, font=font1)
     label.pack(side=tk.TOP, anchor='w')
     delay = outputA(root, systemCheck()+"\n>Guten Tag User, Ready to get started?", label)
     delay = int(delay)
     print(delay)
-    update_button = lambda : button.configure(text = "Yes.", command=lambda: info(root, label, button, "Startup"))
+    update_button = lambda : button.pack(side=tk.LEFT)
     root.after(delay, update_button)
     main_terminal.pack(padx=10, pady=10, side=tk.RIGHT)
 
@@ -77,29 +79,21 @@ def info(root, label, button, text):
     tk.Label(frame2, text = "Info:", font = font1, bg='black', fg='white', width=button_width).pack(side=tk.TOP)
     i = 0
     for i in range(len(button_names)):
-        buttons.append(tk.Button(frame2, text = button_names[i], command=lambda s=i: getInfo(button_stuff(s), greeting), width=button_width))
+        buttons.append(tk.Button(frame2, text = button_names[i], command=lambda s=i: getInfo(s, greeting), width=button_width))
         buttons[i].configure(font=font1)
         buttons[i].pack(side=tk.TOP)
     i+=1
-    buttons.append(tk.Button(frame2, text = "System Status", command = lambda: outputB(systemCheck(), label), width=button_width))
+    buttons.append(tk.Button(frame2, text = "Systemd Status", command = lambda: outputB(systemCheck(), label), width=button_width))
     buttons[i].configure(font=font1)
     buttons[i].pack(side=tk.BOTTOM)
     tk.Label(frame2, text = "System Info:", font = font1, bg='black', fg='white', width=button_width).pack(side=tk.BOTTOM)
+    getInfo(0, label)
     
-    
-        
-    
-def getInfo(button_stuff, label):
-    num = button_stuff.getNum()
+def getInfo(num, label):
     #print(num)
     file = open("texts/"+button_names[num]+'.txt')
     text = file.read()
     label.configure(text = text)
     
-class button_stuff():
-    def __init__(self, num):
-        self.num = num
-    def getNum(self):
-        return self.num
-    
+
 main()
